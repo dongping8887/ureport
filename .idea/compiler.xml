@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ureport2-font" />
+        <module name="ureport2-console" />
+        <module name="ureport2-core" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ureport" target="1.8" />
+      <module name="ureport2-console" target="1.7" />
+      <module name="ureport2-core" target="1.7" />
+      <module name="ureport2-font" target="1.7" />
+      <module name="ureport2-parent" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
