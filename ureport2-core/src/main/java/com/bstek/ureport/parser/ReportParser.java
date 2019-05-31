@@ -15,6 +15,7 @@
  ******************************************************************************/
 package com.bstek.ureport.parser;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -25,6 +26,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 
 import com.bstek.ureport.definition.CellDefinition;
 import com.bstek.ureport.definition.ColumnDefinition;

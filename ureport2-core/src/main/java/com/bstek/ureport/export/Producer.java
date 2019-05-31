@@ -24,5 +24,5 @@ import com.bstek.ureport.model.Report;
  * @since 2016年12月30日
  */
 public interface Producer {
-	void produce(Report report,OutputStream outputStream);
+	void produce(Report report, OutputStream outputStream);
 }

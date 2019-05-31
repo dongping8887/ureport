@@ -13,6 +13,6 @@ public class KaiTiFontRegister implements FontRegister {
 	}
 
 	public String getFontPath() {
-		return "org/triber/databi/ureport/font/kaiti/SIMKAI.TTF";
+		return "org/triber/databi/report/font/kaiti/SIMKAI.TTF";
 	}
 }

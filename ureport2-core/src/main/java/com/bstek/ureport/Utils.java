@@ -15,15 +15,6 @@
  ******************************************************************************/
 package com.bstek.ureport;
 
-import java.math.BigDecimal;
-import java.sql.Connection;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-
 import org.apache.commons.beanutils.PropertyUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,20 +29,28 @@ import com.bstek.ureport.model.Cell;
 import com.bstek.ureport.model.Report;
 import com.bstek.ureport.provider.image.ImageProvider;
 
+import java.math.BigDecimal;
+import java.sql.Connection;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
 
 
 /**
  * @author Jacky.gao
  * @since 2016年11月12日
  */
-
 public class Utils implements ApplicationContextAware{
 	private static final Logger log=LoggerFactory.getLogger(com.bstek.ureport.Utils.class);
 	private static ApplicationContext applicationContext;
 	private static Collection<BuildinDatasource> buildinDatasources;
 	private static Collection<ImageProvider> imageProviders;
 	private static boolean debug;
-	
+	//add by dongping 20190531 begin
+	//页面展示行数限制
+	private static int displayMaxRowNumber;
+	//add by dongping 20190531 end
+
 	public static boolean isDebug() {
 		return Utils.debug;
 	}
@@ -219,7 +218,17 @@ public class Utils implements ApplicationContextAware{
 	public void setDebug(boolean debug) {
 		Utils.debug = debug;
 	}
-	
+
+	//add by dongping 20190531 begin
+	public void setDisplayMaxRowNumber(int displayMaxRowNumber){
+		Utils.displayMaxRowNumber = displayMaxRowNumber;
+	}
+
+	public static int getDisplayMaxRowNumber() {
+		return displayMaxRowNumber;
+	}
+	//add by dongping 20190531 end
+
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext)throws BeansException {
 		Utils.applicationContext=applicationContext;

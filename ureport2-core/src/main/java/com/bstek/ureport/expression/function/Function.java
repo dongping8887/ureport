@@ -26,6 +26,6 @@ import com.bstek.ureport.model.Cell;
  * @since 2016年12月27日
  */
 public interface Function {
-	Object execute(List<ExpressionData<?>> dataList,Context context,Cell currentCell);
+	Object execute(List<ExpressionData<?>> dataList, Context context, Cell currentCell);
 	String name();
 }

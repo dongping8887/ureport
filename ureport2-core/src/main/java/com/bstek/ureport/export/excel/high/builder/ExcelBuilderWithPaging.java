@@ -97,7 +97,7 @@ public class ExcelBuilderWithPaging extends ExcelBuilder{
 		        		int colNum=i-skipCol;
 		        		double colWidth=UnitUtils.pointToPixel(w)*37.5;
 		        		sheet.setColumnWidth(colNum,(short)colWidth);
-		        		org.apache.poi.ss.usermodel.Cell cell = row.getCell(colNum);
+		        		Cell cell = row.getCell(colNum);
 		        		if(cell!=null){
 		        			continue;
 		        		}

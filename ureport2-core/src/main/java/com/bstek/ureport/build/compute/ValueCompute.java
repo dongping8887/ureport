@@ -27,6 +27,6 @@ import com.bstek.ureport.model.Cell;
  * @since 2016年12月21日
  */
 public interface ValueCompute {
-	List<BindData> compute(Cell cell,Context context);
+	List<BindData> compute(Cell cell, Context context);
 	ValueType type();
 }

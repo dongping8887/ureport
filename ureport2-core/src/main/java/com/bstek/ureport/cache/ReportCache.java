@@ -22,6 +22,6 @@ package com.bstek.ureport.cache;
  */
 public interface ReportCache {
 	Object getObject(String file);
-	void storeObject(String file,Object obj);
+	void storeObject(String file, Object obj);
 	boolean disabled();
 }

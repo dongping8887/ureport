@@ -30,5 +30,5 @@ public interface Condition {
 	 * @param context 上下文对象
 	 * @return 返回是否符合条件
 	 */
-	boolean filter(Cell cell,Cell currentCell,Object obj,Context context);
+	boolean filter(Cell cell, Cell currentCell, Object obj, Context context);
 }

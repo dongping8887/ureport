@@ -14,6 +14,6 @@ public class HeiTiFontRegister implements FontRegister {
 	}
 
 	public String getFontPath() {
-		return "org/triber/databi/ureport/font/heiti/SIMHEI.TTF";
+		return "org/triber/databi/report/font/heiti/SIMHEI.TTF";
 	}
 }

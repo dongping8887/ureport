@@ -17,7 +17,9 @@ package com.bstek.ureport.model;
 
 import java.awt.Font;
 import java.awt.FontMetrics;
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
+import java.net.URLEncoder;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

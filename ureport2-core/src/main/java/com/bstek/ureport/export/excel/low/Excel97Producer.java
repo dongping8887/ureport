@@ -107,7 +107,7 @@ public class Excel97Producer {
 			        		}
 			        		double colWidth=UnitUtils.pointToPixel(w)*37.5;
 			        		sheet.setColumnWidth(i,(short)colWidth);
-			        		org.apache.poi.ss.usermodel.Cell cell = row.getCell(i);
+			        		Cell cell = row.getCell(i);
 			        		if(cell!=null){
 			        			continue;
 			        		}
@@ -256,7 +256,7 @@ public class Excel97Producer {
 		        		}
 		        		double colWidth=UnitUtils.pointToPixel(w)*37.5;
 		        		sheet.setColumnWidth(i,(short)colWidth);
-		        		org.apache.poi.ss.usermodel.Cell cell = row.getCell(i);
+		        		Cell cell = row.getCell(i);
 		        		if(cell!=null){
 		        			continue;
 		        		}

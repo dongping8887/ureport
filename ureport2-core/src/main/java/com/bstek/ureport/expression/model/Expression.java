@@ -26,5 +26,5 @@ import com.bstek.ureport.model.Cell;
  * @since 2016年11月18日
  */
 public interface Expression extends Serializable{
-	ExpressionData<?> execute(Cell cell,Cell currentCell,Context context);
+	ExpressionData<?> execute(Cell cell, Cell currentCell, Context context);
 }

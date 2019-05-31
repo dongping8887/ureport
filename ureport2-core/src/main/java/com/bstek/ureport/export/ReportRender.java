@@ -15,6 +15,7 @@
  ******************************************************************************/
 package com.bstek.ureport.export;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.List;

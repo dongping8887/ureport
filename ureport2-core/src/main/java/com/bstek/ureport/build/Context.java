@@ -21,6 +21,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.context.ApplicationContext;
+
 import com.bstek.ureport.Utils;
 import com.bstek.ureport.chart.ChartData;
 import com.bstek.ureport.definition.mapping.MappingType;
@@ -34,9 +37,6 @@ import com.bstek.ureport.model.Column;
 import com.bstek.ureport.model.Report;
 import com.bstek.ureport.model.Row;
 import com.bstek.ureport.utils.ElCalculator;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.context.ApplicationContext;
-
 
 /**
  * @author Jacky.gao
@@ -98,7 +98,7 @@ public class Context {
 				Map<String,String> mapping=new HashMap<String,String>();
 				List<?> list=getDatasetData(expr.getMappingDataset());
 				for(Object obj:list){
-					Object key= Utils.getProperty(obj, expr.getMappingKeyProperty());
+					Object key=Utils.getProperty(obj, expr.getMappingKeyProperty());
 					Object value=Utils.getProperty(obj, expr.getMappingValueProperty());
 					if(key!=null && value!=null){
 						mapping.put(key.toString(), value.toString());

@@ -48,9 +48,7 @@ public class CacheUtils implements ApplicationContextAware{
 	
 	public static void storeChartDataMap(Map<String, ChartData> map){
 		String key=CHART_DATA_key;
-		if(reportCache!=null){
-		    reportCache.storeObject(key, map);
-		}
+		reportCache.storeObject(key, map);
 	}
 	
 	public static Object getObject(String file){

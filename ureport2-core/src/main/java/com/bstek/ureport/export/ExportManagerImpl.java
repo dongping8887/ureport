@@ -15,6 +15,7 @@
  ******************************************************************************/
 package com.bstek.ureport.export;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.sql.DataSource;
@@ -62,16 +63,16 @@ public class ExportManagerImpl implements ExportManager {
 //		String file=config.getFile();
 //		Map<String, Object> parameters=config.getParameters();
 //		ReportDefinition reportDefinition=reportRender.getReportDefinition(file);
-//		Report ureport=reportRender.render(reportDefinition, parameters,unionDsMap);
-//		pdfProducer.produce(ureport, config.getOutputStream());
+//		Report report=reportRender.render(reportDefinition, parameters,unionDsMap);
+//		pdfProducer.produce(report, config.getOutputStream());
 //	}
 //	@Override
 //	public void exportWord(ExportConfigure config,Map<String,DataSource> unionDsMap) {
 //		String file=config.getFile();
 //		Map<String, Object> parameters=config.getParameters();
 //		ReportDefinition reportDefinition=reportRender.getReportDefinition(file);
-//		Report ureport=reportRender.render(reportDefinition, parameters,unionDsMap);
-//		wordProducer.produce(ureport, config.getOutputStream());
+//		Report report=reportRender.render(reportDefinition, parameters,unionDsMap);
+//		wordProducer.produce(report, config.getOutputStream());
 //	}
 	@Override
 	public void exportExcel(ExportConfigure config,Map<String,DataSource> unionDsMap,String reportId) {
@@ -87,8 +88,8 @@ public class ExportManagerImpl implements ExportManager {
 //		String file=config.getFile();
 //		Map<String, Object> parameters=config.getParameters();
 //		ReportDefinition reportDefinition=reportRender.getReportDefinition(file);
-//		Report ureport=reportRender.render(reportDefinition, parameters,unionDsMap);
-//		excel97Producer.produce(ureport, config.getOutputStream());
+//		Report report=reportRender.render(reportDefinition, parameters,unionDsMap);
+//		excel97Producer.produce(report, config.getOutputStream());
 //	}
 //	
 //	@Override
@@ -96,16 +97,16 @@ public class ExportManagerImpl implements ExportManager {
 //		String file=config.getFile();
 //		Map<String, Object> parameters=config.getParameters();
 //		ReportDefinition reportDefinition=reportRender.getReportDefinition(file);
-//		Report ureport=reportRender.render(reportDefinition, parameters,unionDsMap);
-//		excelProducer.produceWithPaging(ureport, config.getOutputStream());
+//		Report report=reportRender.render(reportDefinition, parameters,unionDsMap);
+//		excelProducer.produceWithPaging(report, config.getOutputStream());
 //	}
 //	@Override
 //	public void exportExcel97WithPaging(ExportConfigure config,Map<String,DataSource> unionDsMap) {
 //		String file=config.getFile();
 //		Map<String, Object> parameters=config.getParameters();
 //		ReportDefinition reportDefinition=reportRender.getReportDefinition(file);
-//		Report ureport=reportRender.render(reportDefinition, parameters,unionDsMap);
-//		excel97Producer.produceWithPaging(ureport, config.getOutputStream());
+//		Report report=reportRender.render(reportDefinition, parameters,unionDsMap);
+//		excel97Producer.produceWithPaging(report, config.getOutputStream());
 //	}
 	
 	

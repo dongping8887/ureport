@@ -93,7 +93,7 @@ public class ExcelBuilderDirect extends ExcelBuilder {
 	        		double colWidth=UnitUtils.pointToPixel(w)*37.5;
 	        		int colNum=i-skipCol;
 	        		sheet.setColumnWidth(colNum,(short)colWidth);
-	        		org.apache.poi.ss.usermodel.Cell cell = row.getCell(colNum);
+	        		Cell cell = row.getCell(colNum);
 	        		if(cell!=null){
 	        			continue;
 	        		}

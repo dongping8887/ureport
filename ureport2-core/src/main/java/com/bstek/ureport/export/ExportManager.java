@@ -34,7 +34,7 @@ public interface ExportManager {
 	 * @param parameters 参数
 	 * @return 返回一个HtmlReport对象，里面有报表产生的HTML及相关CSS
 	 */
-	String exportHtml(String file,String contextPath,Map<String, Object> parameters,Map<String,DataSource> unionDsMap,String reportId);
+	String exportHtml(String file, String contextPath, Map<String, Object> parameters, Map<String, DataSource> unionDsMap, String reportId);
 //	/**
 //	 * 导出PDF报表
 //	 * @param config 包含报表模版文件名、参数等信息的配置对象
@@ -44,7 +44,7 @@ public interface ExportManager {
 	 * 不分页导出Excel
 	 * @param config 包含报表模版文件名、参数等信息的配置对象
 	 */
-	void exportExcel(ExportConfigure config,Map<String,DataSource> unionDsMap,String reportId);
+	void exportExcel(ExportConfigure config, Map<String, DataSource> unionDsMap, String reportId);
 	/**
 //	 * 不分页导出Excel97格式文件
 //	 * @param config 包含报表模版文件名、参数等信息的配置对象

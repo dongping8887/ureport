@@ -15,11 +15,6 @@
  ******************************************************************************/
 package com.bstek.ureport.model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.bstek.ureport.build.Context;
 import com.bstek.ureport.build.paging.Page;
 import com.bstek.ureport.build.paging.PagingBuilder;
@@ -27,6 +22,11 @@ import com.bstek.ureport.definition.Band;
 import com.bstek.ureport.definition.ConditionPropertyItem;
 import com.bstek.ureport.definition.HeaderFooterDefinition;
 import com.bstek.ureport.definition.Paper;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Jacky.gao
@@ -96,7 +96,7 @@ public class Report {
 		String cellName=cell.getName();
 		List<Cell> cells=null;
 		if(cellsMap.containsKey(cellName)){
-			cells=cellsMap.get(cellName);			
+			cells=cellsMap.get(cellName);
 		}else{
 			cells=new ArrayList<Cell>();
 			cellsMap.put(cellName, cells);

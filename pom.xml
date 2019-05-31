@@ -20,8 +20,10 @@
 	</distributionManagement>
 
 	<modules>
-		<module>ureport2-core</module>
 		<module>ureport2-parent</module>
+		<module>ureport2-core</module>
+
+
 <!--		<module>ureport2-console</module>-->
 <!--		<module>ureport2-font</module>-->
 	</modules>

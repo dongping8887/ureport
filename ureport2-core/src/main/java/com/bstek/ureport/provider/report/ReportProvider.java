@@ -44,7 +44,7 @@ public interface ReportProvider {
 	 * @param file 报表名称
 	 * @param content 报表的XML内容
 	 */
-	void saveReport(String file,String content);
+	void saveReport(String file, String content);
 	/**
 	 * @return 返回存储器名称
 	 */

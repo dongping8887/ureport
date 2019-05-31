@@ -22,17 +22,6 @@ package com.bstek.ureport.build;
 public class Splash {
 	public void doPrint(){
 		StringBuilder sb=new StringBuilder();
-		sb.append("\n");
-		sb.append("_____  __________ __________________ _______ ________ ______________ ");
-		sb.append("\n");
-		sb.append("__   / / /___  __ \\___  ____/___  __ \\__  __ \\___  __ \\___  __/__|__ \\");
-		sb.append("\n");
-		sb.append("_  / / / __  /_/ /__  __/   __  /_/ /_  / / /__  /_/ /__  /   ____/ /");
-		sb.append("\n");
-		sb.append("/ /_/ /  _  _, _/ _  /___   _  ____/ / /_/ / _  _, _/ _  /    _  __/ ");
-		sb.append("\n");
-		sb.append("\\____/   /_/ |_|  /_____/   /_/      \\____/  /_/ |_|  /_/     /____/ ");
-		sb.append("\n");
 		sb.append("........................................................................................................");
 		sb.append("\n");
 		sb.append(".  uReport, is a Chinese style report engine");

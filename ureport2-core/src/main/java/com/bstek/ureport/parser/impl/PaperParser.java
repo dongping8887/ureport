@@ -73,7 +73,7 @@ public class PaperParser implements Parser<Paper> {
 			paper.setColumnCount(Integer.valueOf(element.attributeValue("column-count")));
 			paper.setColumnMargin(Integer.valueOf(element.attributeValue("column-margin")));
 		}
-		String htmlReportAlign=element.attributeValue("html-ureport-align");
+		String htmlReportAlign=element.attributeValue("html-report-align");
 		if(StringUtils.isNotBlank(htmlReportAlign)){
 			paper.setHtmlReportAlign(HtmlReportAlign.valueOf(htmlReportAlign));
 		}
