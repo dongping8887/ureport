@@ -16,7 +16,9 @@
 package com.bstek.ureport.build;
 
 import com.bstek.ureport.build.compute.*;
+import com.bstek.ureport.definition.value.Value;
 import com.bstek.ureport.exception.ReportException;
+import com.bstek.ureport.model.Cell;
 
 import java.util.HashMap;
 import java.util.List;
@@ -48,7 +50,7 @@ public class DataCompute {
 		
 	}
 
-	public static List<BindData> buildCellData(Cell cell,Context context) {
+	public static List<BindData> buildCellData(Cell cell, Context context) {
 		Value value = cell.getValue();
 		ValueCompute valueCompute=valueComputesMap.get(value.getType().name());
 		if(valueCompute!=null){

@@ -44,6 +44,7 @@ import com.bstek.ureport.provider.image.ImageProvider;
  * @author Jacky.gao
  * @since 2016年11月12日
  */
+
 public class Utils implements ApplicationContextAware{
 	private static final Logger log=LoggerFactory.getLogger(com.bstek.ureport.Utils.class);
 	private static ApplicationContext applicationContext;

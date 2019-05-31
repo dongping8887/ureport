@@ -22,11 +22,17 @@ import java.util.Map;
 import java.util.Set;
 
 import com.bstek.ureport.Utils;
+import com.bstek.ureport.chart.ChartData;
 import com.bstek.ureport.definition.mapping.MappingType;
+import com.bstek.ureport.definition.value.SimpleValue;
+import com.bstek.ureport.definition.value.Value;
 import com.bstek.ureport.exception.CellDependencyException;
 import com.bstek.ureport.exception.DatasetUndefinitionException;
 import com.bstek.ureport.expression.model.expr.dataset.DatasetExpression;
+import com.bstek.ureport.model.Cell;
+import com.bstek.ureport.model.Column;
 import com.bstek.ureport.model.Report;
+import com.bstek.ureport.model.Row;
 import com.bstek.ureport.utils.ElCalculator;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ApplicationContext;
