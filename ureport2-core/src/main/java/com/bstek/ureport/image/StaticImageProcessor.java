@@ -51,7 +51,7 @@ public class StaticImageProcessor implements ImageProcessor<String> {
 		}catch(Exception ex){
 			ApplicationContext applicationContext=Utils.getApplicationContext();
 			log.warning("Image ["+path+"] not exist,use default picture.");
-			String imageNotExistPath="classpath:org/triber/databi/report/image/image-not-exist.jpg";
+			String imageNotExistPath="classpath:com/bstek/ureport/image/image-not-exist.jpg";
 			try {
 				return applicationContext.getResource(imageNotExistPath).getInputStream();
 			} catch (IOException e1) {

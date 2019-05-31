@@ -13,6 +13,6 @@ public class TimesNewRomanFontRegister implements FontRegister {
 	}
 
 	public String getFontPath() {
-		return "org/triber/databi/report/font/timesnewroman/TIMES.TTF";
+		return "com/bstek/ureport/font/timesnewroman/TIMES.TTF";
 	}
 }
