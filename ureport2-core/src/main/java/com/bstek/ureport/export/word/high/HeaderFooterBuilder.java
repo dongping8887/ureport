@@ -47,8 +47,8 @@ import com.bstek.ureport.model.Report;
  */
 public class HeaderFooterBuilder {
 	public void build(XWPFDocument document,CTSectPr sectPr,Report report){
-		//HeaderFooterDefinition headerDef=report.getHeader();
-		//HeaderFooterDefinition footerDef=report.getFooter();
+		//HeaderFooterDefinition headerDef=ureport.getHeader();
+		//HeaderFooterDefinition footerDef=ureport.getFooter();
 		
 		HeaderFooter header=new HeaderFooter();
 		HeaderFooter footer=new HeaderFooter();

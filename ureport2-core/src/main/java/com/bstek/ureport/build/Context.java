@@ -21,40 +21,35 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.context.ApplicationContext;
-
 import com.bstek.ureport.Utils;
-import com.bstek.ureport.chart.ChartData;
 import com.bstek.ureport.definition.mapping.MappingType;
-import com.bstek.ureport.definition.value.SimpleValue;
-import com.bstek.ureport.definition.value.Value;
 import com.bstek.ureport.exception.CellDependencyException;
 import com.bstek.ureport.exception.DatasetUndefinitionException;
 import com.bstek.ureport.expression.model.expr.dataset.DatasetExpression;
-import com.bstek.ureport.model.Cell;
-import com.bstek.ureport.model.Column;
 import com.bstek.ureport.model.Report;
-import com.bstek.ureport.model.Row;
-import com.bstek.ureport.utils.ElCompute;
+import com.bstek.ureport.utils.ElCalculator;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.context.ApplicationContext;
+
 
 /**
  * @author Jacky.gao
  * @since 2016年11月1日
  */
 public class Context {
+	private String reportId;
 	private Report report;
 	private Cell rootCell;
 	private int pageIndex;
 	private int totalPages;
 	private boolean doPaging;
-	private Map<String,Object> variableMap=new HashMap<String,Object>();
 	private Map<Integer,List<Row>> currentPageRowsMap=new HashMap<Integer,List<Row>>();
 	private Map<String,Dataset> datasetMap;
 	private ApplicationContext applicationContext;
 	private ReportBuilder reportBuilder;
 	private Map<String,Object> parameters;
 	private HideRowColumnBuilder hideRowColumnBuilder;
+	private ElCalculator elCalculator=new ElCalculator();
 	private List<Cell> existPageFunctionCells=new ArrayList<Cell>();
 	private Map<String,List<Cell>> unprocessedCellsMap = new HashMap<String,List<Cell>>();
 	private Map<Row,Map<Column,Cell>> blankCellsMap=new HashMap<Row,Map<Column,Cell>>();
@@ -85,7 +80,9 @@ public class Context {
 		this.applicationContext=applicationContext;
 		this.parameters=parameters;
 	}
-	
+	public Context(Map<String,Object> parameters){
+		this.parameters=parameters;
+	}
 	public Map<String,String> getMapping(DatasetExpression expr){
 		if(expr.getMappingType().equals(MappingType.simple)){
 			Map<String,String> mapping=expr.getMapping();
@@ -95,7 +92,7 @@ public class Context {
 				Map<String,String> mapping=new HashMap<String,String>();
 				List<?> list=getDatasetData(expr.getMappingDataset());
 				for(Object obj:list){
-					Object key=Utils.getProperty(obj, expr.getMappingKeyProperty());
+					Object key= Utils.getProperty(obj, expr.getMappingKeyProperty());
 					Object value=Utils.getProperty(obj, expr.getMappingValueProperty());
 					if(key!=null && value!=null){
 						mapping.put(key.toString(), value.toString());
@@ -268,7 +265,7 @@ public class Context {
 	}
 	
 	public Object evalExpr(String expression){
-		return new ElCompute().doCompute(expression);
+		return elCalculator.eval(expression);
 	}
 	
 	public boolean isCellPocessed(String cellName){
@@ -315,15 +312,12 @@ public class Context {
 	public Cell getRootCell() {
 		return rootCell;
 	}
-	
-	public void putVariable(String key,Object value){
-		variableMap.put(key, value);
+	//添加 reportID
+	public String getReportId() {
+		return reportId;
+	}
+	public void setReportId(String reportId) {
+		this.reportId = reportId;
 	}
 	
-	public void resetVariableMap(){
-		variableMap.clear();
-	}
-	public Object getVariable(String key){
-		return variableMap.get(key);
-	}
 }

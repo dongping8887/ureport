@@ -47,23 +47,32 @@ public class SqlDatasetDefinition implements DatasetDefinition {
 	private List<Parameter> parameters;
 	private List<Field> fields;
 	private Expression sqlExpression;
+	/**
+	 * 
+	 * @Title: buildDataset   
+	 * @Description: TODO(处理sql表达式和执行sql获取数据集)   
+	 * @param: @param parameterMap
+	 * @param: @param conn
+	 * @param: @return      
+	 * @return: Dataset      
+	 * @throws
+	 */
 	public Dataset buildDataset(Map<String,Object> parameterMap,Connection conn){
 		String sqlForUse=sql;
 		Context context=new Context(null,parameterMap);
 		if(sqlExpression!=null){
 			sqlForUse=executeSqlExpr(sqlExpression, context);
 		}else{
-			Pattern pattern=Pattern.compile("\\$\\{.*?\\}");
+			Pattern pattern=Pattern.compile("\\$\\{[\\s\\S]*?\\}\\$");
 			Matcher matcher=pattern.matcher(sqlForUse);
 			while(matcher.find()){
 				String substr=matcher.group();
-				String sqlExpr=substr.substring(2,substr.length()-1);
+				String sqlExpr=substr.substring(2,substr.length()-2);
 				Expression expr=ExpressionUtils.parseExpression(sqlExpr);
 				String result=executeSqlExpr(expr, context);
 				sqlForUse=sqlForUse.replace(substr, result);
 			}
 		}
-		Utils.logToConsole("RUNTIME SQL:"+sqlForUse);
 		Map<String, Object> pmap = buildParameters(parameterMap);
 		if(ProcedureUtils.isProcedure(sqlForUse)){
 			List<Map<String,Object>> result = ProcedureUtils.procedureQuery(sqlForUse,pmap,conn);
@@ -71,7 +80,13 @@ public class SqlDatasetDefinition implements DatasetDefinition {
 		}
 		SingleConnectionDataSource datasource=new SingleConnectionDataSource(conn,false);
 		NamedParameterJdbcTemplate jdbcTemplate=new NamedParameterJdbcTemplate(datasource);
-		List<Map<String,Object>> list= jdbcTemplate.queryForList(sqlForUse, pmap);
+		//放弃使用sql占位符；直接使用变量替换
+		for(String key : pmap.keySet()) {
+			sqlForUse=sqlForUse.replaceAll(":"+key, String.valueOf(pmap.get(key)));
+		}
+		Utils.logToConsole("RUNTIME SQL:"+sqlForUse);
+		Map<String, Object> ppmap =new HashMap();
+		List<Map<String,Object>> list= jdbcTemplate.queryForList(sqlForUse, ppmap);
 		return new Dataset(name,list);
 	}
 	

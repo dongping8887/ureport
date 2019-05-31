@@ -126,9 +126,7 @@ public class DatasetValueParser extends ValueParser {
 		String property=ele.attributeValue("property");
 		condition.setLeftProperty(property);
 		condition.setLeft(property);
-		String operation=ele.attributeValue("op");
-		condition.setOperation(operation);
-		condition.setOp(Op.parse(operation));
+		condition.setOp(Op.parse(ele.attributeValue("op")));
 		for(Object o:ele.elements()){
 			if(o==null || !(o instanceof Element)){
 				continue;

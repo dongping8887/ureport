@@ -25,7 +25,7 @@ public class WordProducer{/* implements Producer{
 	public static final String BEAN_ID="ureport.wordExporter";
 	
 	@Override
-	public void produce(Report report,OutputStream outputStream) {
+	public void produce(Report ureport,OutputStream outputStream) {
 		
 		String tempDir=System.getProperty("java.io.tmpdir");
 		String tempWordFile=tempDir+"/"+UUID.randomUUID().toString()+".doc";
@@ -39,7 +39,7 @@ public class WordProducer{/* implements Producer{
 				sectpr.addNewPgSz();
 			}
 			CTPageSz pageSize = sectpr.getPgSz();
-			Paper paper=report.getPaper();
+			Paper paper=ureport.getPaper();
 			Orientation orientation=paper.getOrientation();
 			if(orientation.equals(Orientation.landscape)){
 				pageSize.setOrient(STPageOrientation.LANDSCAPE);
@@ -63,11 +63,11 @@ public class WordProducer{/* implements Producer{
 			pageMar.setRight(BigInteger.valueOf(DxaUtils.points2dxa(paper.getRightMargin())));
 			pageMar.setTop(BigInteger.valueOf(DxaUtils.points2dxa(paper.getTopMargin())));
 			pageMar.setBottom(BigInteger.valueOf(DxaUtils.points2dxa(paper.getBottomMargin())));
-			List<Column> columns=report.getColumns();
+			List<Column> columns=ureport.getColumns();
 			int totalColumn=buildColumnSize(columns);
 			int tableWidth=buildTablePCTWidth(columns);
-			List<Page> pages=report.getPages();
-			Map<Row,Map<Column,Cell>> cellMap=report.getRowColCellMap();
+			List<Page> pages=ureport.getPages();
+			Map<Row,Map<Column,Cell>> cellMap=ureport.getRowColCellMap();
 			int totalPages=pages.size();
 			int pageIndex=1;
 			for(Page page:pages){

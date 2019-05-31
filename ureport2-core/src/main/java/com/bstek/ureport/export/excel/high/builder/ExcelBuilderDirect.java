@@ -56,7 +56,7 @@ import com.bstek.ureport.utils.UnitUtils;
  * @since 2017年8月10日
  */
 public class ExcelBuilderDirect extends ExcelBuilder {
-	public void build(Report report, OutputStream outputStream) {
+	public void build(Report report,String uuid, OutputStream outputStream) {
 		CellStyleContext cellStyleContext=new CellStyleContext();
 		SXSSFWorkbook wb = new SXSSFWorkbook(100000);
 		CreationHelper creationHelper=wb.getCreationHelper();
@@ -202,7 +202,10 @@ public class ExcelBuilderDirect extends ExcelBuilder {
 		        			}
 		        		}else if(obj instanceof ChartData){
 		        			ChartData chartData=(ChartData)obj;
-		        			String base64Data=chartData.retriveBase64Data();
+		        			String base64Data=null;
+		        			if(uuid!=null) {
+		        				base64Data=chartData.getImageBase64(uuid);
+		        			}
 		        			if(base64Data!=null){
 		        				Image img=new Image(base64Data,chartData.getWidth(),chartData.getHeight());
 		        				InputStream inputStream=ImageUtils.base64DataToInputStream(img.getBase64Data());

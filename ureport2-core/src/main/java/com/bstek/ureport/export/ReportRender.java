@@ -15,11 +15,12 @@
  ******************************************************************************/
 package com.bstek.ureport.export;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+
+import javax.sql.DataSource;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -48,19 +49,19 @@ public class ReportRender implements ApplicationContextAware{
 	private Collection<ReportProvider> reportProviders;
 	private DownCellbuilder downCellParentbuilder=new DownCellbuilder();
 	private RightCellbuilder rightCellParentbuilder=new RightCellbuilder();
-	public Report render(String file,Map<String,Object> parameters){
-		ReportDefinition reportDefinition=getReportDefinition(file);
-		return reportBuilder.buildReport(reportDefinition,parameters);
-	}
+//	public Report render(String file,Map<String,Object> parameters){
+//		ReportDefinition reportDefinition=getReportDefinition(file);
+//		return reportBuilder.buildReport(reportDefinition,parameters);
+//	}
 	
-	public Report render(ReportDefinition reportDefinition,Map<String,Object> parameters){
-		return reportBuilder.buildReport(reportDefinition,parameters);
+	public Report render(ReportDefinition reportDefinition,Map<String,Object> parameters,Map<String,DataSource> unionDsMap,String reportId){
+		return reportBuilder.buildReport(reportDefinition,parameters,unionDsMap,reportId);
 	}
 	
 	public ReportDefinition getReportDefinition(String file){
 		ReportDefinition reportDefinition=CacheUtils.getReportDefinition(file);
 		if(reportDefinition==null){
-			reportDefinition=parseReport(file);
+			//reportDefinition=parseReport(file);
 			rebuildReportDefinition(reportDefinition);
 			CacheUtils.cacheReportDefinition(file, reportDefinition);
 		}
@@ -83,21 +84,9 @@ public class ReportRender implements ApplicationContextAware{
 		}
 	}
 	
-	public ReportDefinition parseReport(String file){
-		InputStream inputStream=null;
-		try {
-			inputStream=buildReportFile(file);
-			ReportDefinition reportDefinition=reportParser.parse(inputStream,file);
-			return reportDefinition;
-		}finally{
-			try {
-				if(inputStream!=null){
-					inputStream.close();					
-				}
-			} catch (IOException e) {
-				throw new ReportParseException(e);
-			}
-		}
+	public ReportDefinition parseReport(String file,String name){
+		ReportDefinition reportDefinition=reportParser.parse(file,name);
+		return reportDefinition;
 	}
 	
 	private InputStream buildReportFile(String file){

@@ -23,6 +23,7 @@ import com.bstek.ureport.expression.model.Expression;
 import com.bstek.ureport.parser.Parser;
 
 /**
+ *  修改=====取消连接参数表达式
  * @author Jacky.gao
  * @since 2017年3月31日
  */

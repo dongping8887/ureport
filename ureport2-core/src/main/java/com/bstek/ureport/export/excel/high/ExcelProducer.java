@@ -29,20 +29,20 @@ public class ExcelProducer {
 	private ExcelBuilderWithPaging excelBuilderWithPaging=new ExcelBuilderWithPaging();
 	private ExcelBuilderDirect excelBuilderDirect=new ExcelBuilderDirect();
 	public void produceWithPaging(Report report, OutputStream outputStream) {
-		doProduce(report, outputStream, true,false);
+		doProduce(report, outputStream,null, true,false);
 	}
-	public void produce(Report report, OutputStream outputStream) {
-		doProduce(report, outputStream, false,false);
+	public void produce(Report report,String uuid, OutputStream outputStream) {
+		doProduce(report, outputStream,uuid ,false,false);
 	}
 	public void produceWithSheet(Report report, OutputStream outputStream) {
-		doProduce(report, outputStream, true,true);
+		doProduce(report, outputStream, null,true,true);
 	}
 	
-	private void doProduce(Report report, OutputStream outputStream,boolean withPaging,boolean withSheet) {
+	private void doProduce(Report report, OutputStream outputStream,String uuid,boolean withPaging,boolean withSheet) {
 		if(withPaging){
 			excelBuilderWithPaging.build(report, outputStream, withSheet);
 		}else{
-			excelBuilderDirect.build(report, outputStream);
+			excelBuilderDirect.build(report,uuid,outputStream);
 		}
 	}
 }

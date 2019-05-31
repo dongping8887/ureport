@@ -98,6 +98,7 @@ public abstract class BaseCondition implements Condition {
 	
 	public void setOp(Op op) {
 		this.op = op;
+		this.operation=op.toString();
 	}
 	public Op getOp() {
 		return op;

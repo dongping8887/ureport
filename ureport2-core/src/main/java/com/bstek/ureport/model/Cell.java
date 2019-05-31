@@ -17,9 +17,7 @@ package com.bstek.ureport.model;
 
 import java.awt.Font;
 import java.awt.FontMetrics;
-import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
-import java.net.URLEncoder;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -585,8 +583,7 @@ public class Cell implements ReportCell {
 			}
 		}
 		Font font=cellStyle.getFont();
-		JLabel jlabel=new JLabel();
-		FontMetrics fontMetrics=jlabel.getFontMetrics(font);
+		FontMetrics fontMetrics=new JLabel().getFontMetrics(font);
 		int textWidth=fontMetrics.stringWidth(dataText);
 		
 		double fontSize=cellStyle.getFontSize();
@@ -618,8 +615,7 @@ public class Cell implements ReportCell {
 				continue;
 			}
 			sb.append(text);
-			
-			int width=fontMetrics.stringWidth(sb.toString())+4;
+			int width=fontMetrics.stringWidth(sb.toString());
 			if(width>totalColumnWidth){
 				sb.deleteCharAt(sb.length()-1);
 				totalLineHeight+=singleLineHeight;										
@@ -650,10 +646,7 @@ public class Cell implements ReportCell {
 		int dif=totalLineHeight-totalRowHeight;
 		if(dif>0){
 			int rowHeight=row.getHeight();
-			int newRowHeight = rowHeight+dif;
-			if(row.getRealHeight()< newRowHeight){
-				row.setRealHeight(newRowHeight);
-			}
+			row.setRealHeight(rowHeight+dif);
 		}
 	}
 	
@@ -911,12 +904,11 @@ public class Cell implements ReportCell {
 					Expression expr=param.getValueExpression();
 					value=buildExpression(context, name, expr);
 				}
-				try {
-					value=URLEncoder.encode(value, "utf-8");
-					value=URLEncoder.encode(value, "utf-8");
-				} catch (UnsupportedEncodingException e) {
-					throw new ReportComputeException(e);
-				}
+//				try {
+//					value=URLEncoder.encode(value, "utf-8");
+//				} catch (UnsupportedEncodingException e) {
+//					throw new ReportComputeException(e);
+//				}
 				if(i>0){
 					sb.append("&");
 				}

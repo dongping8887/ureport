@@ -16,9 +16,9 @@
 package com.bstek.ureport.expression.model.expr.ifelse;
 
 import com.bstek.ureport.build.Context;
+import com.bstek.ureport.expression.model.Expression;
 import com.bstek.ureport.expression.model.data.ExpressionData;
 import com.bstek.ureport.expression.model.expr.BaseExpression;
-import com.bstek.ureport.expression.model.expr.ExpressionBlock;
 import com.bstek.ureport.model.Cell;
 
 /**
@@ -28,8 +28,7 @@ import com.bstek.ureport.model.Cell;
 public class ElseIfExpression extends BaseExpression {
 	private static final long serialVersionUID = -198920923804292977L;
 	private ExpressionConditionList conditionList;
-	
-	private ExpressionBlock expression;
+	private Expression expression;
 	@Override
 	protected ExpressionData<?> compute(Cell cell,Cell currentCell, Context context) {
 		return expression.execute(cell, currentCell,context);
@@ -40,10 +39,10 @@ public class ElseIfExpression extends BaseExpression {
 	public void setConditionList(ExpressionConditionList conditionList) {
 		this.conditionList = conditionList;
 	}
-	public ExpressionBlock getExpression() {
-		return expression;
-	}
-	public void setExpression(ExpressionBlock expression) {
+	public void setExpression(Expression expression) {
 		this.expression = expression;
+	}
+	public Expression getExpression() {
+		return expression;
 	}
 }

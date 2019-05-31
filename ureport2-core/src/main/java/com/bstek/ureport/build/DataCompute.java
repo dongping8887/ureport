@@ -15,28 +15,20 @@
  ******************************************************************************/
 package com.bstek.ureport.build;
 
+import com.bstek.ureport.build.compute.*;
+import com.bstek.ureport.exception.ReportException;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.bstek.ureport.build.compute.ChartValueCompute;
-import com.bstek.ureport.build.compute.DatasetValueCompute;
-import com.bstek.ureport.build.compute.ExpressionValueCompute;
-import com.bstek.ureport.build.compute.ImageValueCompute;
-import com.bstek.ureport.build.compute.SimpleValueCompute;
-import com.bstek.ureport.build.compute.SlashValueCompute;
-import com.bstek.ureport.build.compute.ValueCompute;
-import com.bstek.ureport.build.compute.ZxingValueCompute;
-import com.bstek.ureport.definition.value.Value;
-import com.bstek.ureport.exception.ReportException;
-import com.bstek.ureport.model.Cell;
 
 /**
  * @author Jacky.gao
  * @since 2016年12月21日
  */
 public class DataCompute {
-	private static Map<String,ValueCompute> valueComputesMap = new HashMap<String,ValueCompute>();
+	private static Map<String, ValueCompute> valueComputesMap = new HashMap<String,ValueCompute>();
 
 	static{
 		SimpleValueCompute simpleValueCompute=new SimpleValueCompute();
@@ -57,7 +49,6 @@ public class DataCompute {
 	}
 
 	public static List<BindData> buildCellData(Cell cell,Context context) {
-		context.resetVariableMap();
 		Value value = cell.getValue();
 		ValueCompute valueCompute=valueComputesMap.get(value.getType().name());
 		if(valueCompute!=null){

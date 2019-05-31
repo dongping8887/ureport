@@ -35,8 +35,14 @@ import com.bstek.ureport.expression.model.Expression;
 import com.bstek.ureport.parser.Parser;
 
 /**
- * @author Jacky.gao
- * @since 2016年12月30日
+ * 
+ * @ClassName:  DatasourceParser   
+ * @Description:TODO(数据源解析====主要修改jdbc类型数据源)   
+ * @author: wl
+ * @date:   2018年11月30日 上午10:26:00   
+ *     
+ * @Copyright: 2018 www.rjhcsoft.com Inc. All rights reserved. 
+ * 注意：本内容仅限于北京融嘉合创科技有限公司内部传阅，禁止外泄以及用于其他的商业目
  */
 public class DatasourceParser implements Parser<DatasourceDefinition> {
 	@Override
@@ -45,10 +51,11 @@ public class DatasourceParser implements Parser<DatasourceDefinition> {
 		if(type.equals("jdbc")){
 			JdbcDatasourceDefinition ds=new JdbcDatasourceDefinition();
 			ds.setName(element.attributeValue("name"));
-			ds.setDriver(element.attributeValue("driver"));
-			ds.setUrl(element.attributeValue("url"));
-			ds.setUsername(element.attributeValue("username"));
-			ds.setPassword(element.attributeValue("password"));
+			ds.setDsId(element.attributeValue("dsId"));
+//			ds.setDriver(element.attributeValue("driver"));
+//			ds.setUrl(element.attributeValue("url"));
+//			ds.setUsername(element.attributeValue("username"));
+//			ds.setPassword(element.attributeValue("password"));
 			ds.setDatasets(parseDatasets(element));
 			return ds;
 		}else if(type.equals("spring")){

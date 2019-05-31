@@ -184,16 +184,8 @@ public class HtmlProducer{
 					}
 					hasLink=true;
 					String urlParameter=cell.buildLinkParameters(context);
-					if(StringUtils.isNotBlank(urlParameter)) {
-						if(linkURL.indexOf("?")==-1){
-							linkURL+="?"+urlParameter;
-						}else{
-							linkURL+="&"+urlParameter;
-						}						
-					}
-					String target=cell.getLinkTargetWindow();
-					if(StringUtils.isBlank(target))target="_self";
-					sb.append("<a href=\""+linkURL+"\" target=\""+target+"\">");
+					//处理跳转连接修改
+					sb.append("<a href=\"javascript:void(0)\" down='"+linkURL+"' down_params='"+urlParameter+"' >");
 				}
 				Object obj=(cell.getFormatData()== null) ? "" : cell.getFormatData();
 				if(obj instanceof Image){

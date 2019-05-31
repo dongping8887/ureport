@@ -15,7 +15,6 @@
  ******************************************************************************/
 package com.bstek.ureport.parser;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -24,8 +23,8 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
 
 import com.bstek.ureport.definition.CellDefinition;
 import com.bstek.ureport.definition.ColumnDefinition;
@@ -61,16 +60,12 @@ public class ReportParser {
 		parsers.put("footer",new HeaderFooterParser());
 		parsers.put("search-form",new SearchFormParser());
 	}
-	public ReportDefinition parse(InputStream inputStream,String file) {
+	public ReportDefinition parse(String file,String name) {
 		ReportDefinition report=new ReportDefinition();
-		report.setReportFullName(file);
-		SAXReader saxReader = new SAXReader();
+		report.setReportFullName(name);
 		try{
-			Document document = saxReader.read(inputStream);
+			Document document = DocumentHelper.parseText(file);
 			Element element = document.getRootElement();
-			if(!element.getName().equals("ureport")){
-				throw new ReportParseException("Unknow report file.");
-			}
 			List<RowDefinition> rows=new ArrayList<RowDefinition>();
 			List<ColumnDefinition> columns=new ArrayList<ColumnDefinition>();
 			List<CellDefinition> cells=new ArrayList<CellDefinition>();

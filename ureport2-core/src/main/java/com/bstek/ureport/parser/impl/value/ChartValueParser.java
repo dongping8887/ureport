@@ -43,7 +43,6 @@ import com.bstek.ureport.chart.option.Position;
 import com.bstek.ureport.chart.option.impl.AnimationsOption;
 import com.bstek.ureport.chart.option.impl.LegendOption;
 import com.bstek.ureport.chart.option.impl.TitleOption;
-import com.bstek.ureport.chart.plugins.DataLabelsPlugin;
 import com.bstek.ureport.definition.value.ChartValue;
 import com.bstek.ureport.definition.value.Value;
 import com.bstek.ureport.exception.ReportParseException;
@@ -78,13 +77,6 @@ public class ChartValueParser extends ValueParser {
 				chart.setYaxes(yaxes);
 			}else if(name.equals("option")){
 				chart.getOptions().add(parseOption(ele));
-			}else if(name.equals("plugin")) {
-				String pluginName=ele.attributeValue("name");
-				if(pluginName.equals("data-labels")) {					
-					DataLabelsPlugin plugin=new DataLabelsPlugin();
-					plugin.setDisplay(Boolean.valueOf(ele.attributeValue("display")));
-					chart.getPlugins().add(plugin);
-				}
 			}
 		}
 		return value;

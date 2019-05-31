@@ -25,10 +25,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.beanutils.PropertyUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-
 import com.bstek.ureport.build.Context;
 import com.bstek.ureport.definition.datasource.BuildinDatasource;
 import com.bstek.ureport.exception.ConvertException;
@@ -38,11 +39,13 @@ import com.bstek.ureport.model.Report;
 import com.bstek.ureport.provider.image.ImageProvider;
 
 
+
 /**
  * @author Jacky.gao
  * @since 2016年11月12日
  */
 public class Utils implements ApplicationContextAware{
+	private static final Logger log=LoggerFactory.getLogger(com.bstek.ureport.Utils.class);
 	private static ApplicationContext applicationContext;
 	private static Collection<BuildinDatasource> buildinDatasources;
 	private static Collection<ImageProvider> imageProviders;
@@ -54,7 +57,7 @@ public class Utils implements ApplicationContextAware{
 	
 	public static void logToConsole(String msg){
 		if(Utils.debug){
-			System.out.println(msg);
+			log.debug("[报表引擎日志]"+msg);
 		}
 	}
 	
